@@ -1,0 +1,18 @@
+GET http://localhost:9090/users/
+
+###
+
+GET http://localhost:9090/users/666855c0c01daff1f8ed2491
+
+###
+
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "purple_grapefruit"
+}
+
+###
+
+DELETE http://localhost:9090/users/666855c0c01daff1f8ed2491
