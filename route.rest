@@ -14,5 +14,57 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "whimsicle_walrus"
+}
+
+###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "curious_cat"
+}
+
+###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "blue_butterfly"
+}
+
+###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "tiny_turtle"
+}
+
+###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "purple_grapefruit"
+}
+
+###
+POST http://localhost:9090/users
+Content-Type: application/json
+
+{
+    "username": "silent_swallow"
+}
+
+###
 
 DELETE http://localhost:9090/users/666855c0c01daff1f8ed2491
+
+
+###
+GET http://localhost:9090/artCollections/ 

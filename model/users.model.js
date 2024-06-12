@@ -6,6 +6,10 @@ const UserSchema = new mongoose.Schema({
     required: "enter username",
     unique: true,
   },
+  curatedCollection: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "ArtCollection",
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
