@@ -2,9 +2,11 @@ const express = require("express");
 const router = express.Router();
 
 const {
-  getUser,
-  createUser,
   getAllUsers,
+  getUser,
+
+  createUser,
+
   deleteUser,
 } = require("../controller/users.controller");
 

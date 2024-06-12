@@ -1,4 +1,5 @@
 const User = require("../model/users.model");
+const ArtCollection = require("../model/artCollections.model");
 
 //Fetch All users
 exports.getAllUsers = async (req, res, next) => {
@@ -10,15 +11,34 @@ exports.getAllUsers = async (req, res, next) => {
   }
 };
 
-//Create user
+//Create user and user collection simulaneously
 exports.createUser = async (req, res, next) => {
-  const user = new User({
-    username: req.body.username,
-  });
+  const session = await User.startSession();
+  session.startTransaction();
 
   try {
+    // Create new user
+    const user = new User({
+      username: req.body.username,
+    });
+
     const newUser = await user.save();
-    res.status(201).json(newUser);
+
+    // Create collection for user
+    const newCollection = new ArtCollection({
+      user: newUser._id,
+      artworks: [],
+    });
+    await newCollection.save({ session });
+
+    //assign userId to collection
+    newUser.curatedCollection = newCollection._id;
+    await newUser.save({ session });
+
+    await session.commitTransaction();
+    session.endSession();
+
+    res.status(201).json({ user: newUser, collection: newCollection });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
