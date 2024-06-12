@@ -22,7 +22,9 @@ Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
+
 Create a New User - Adds a new user to the DB with the provided username. Simultaneously creates an artcollection and adds it to the DB that is linked to the new user.
+
 
 Request Type: POST
 Endpoint: /users
@@ -31,8 +33,10 @@ Example Request: POST https://trexicurabe.onrender.com/users
 
 Content Type - json:
 {
+
 "username": "purple_grapefruit"
 }
+
 
 Delete User by ID - Removes a user from the databse by their unique ID.
 
@@ -41,6 +45,10 @@ Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
+
+</p>
+
+=======
 </p>
 
 <h3>Curated Collections Endpoints:</h3>
