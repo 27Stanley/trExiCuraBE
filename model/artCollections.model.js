@@ -19,3 +19,5 @@ const ArtCollectionSchema = new mongoose.Schema({
 const ArtCollection = mongoose.model("ArtCollection", ArtCollectionSchema);
 
 module.exports = ArtCollection;
+
+//test push
