@@ -4,7 +4,6 @@ This API allows for fetching, posting, and deleting user and their curated art c
 
 The base URL for all endpoints is https://trexicurabe.onrender.com/.
 
-
 <h2>Endpoints:</h2>
 
 <h3>Users Endpoints:</h3>
@@ -16,7 +15,6 @@ Endpoint: /users
 
 Example request: GET https://trexicurabe.onrender.com/users/
 
-
 Fetch User by ID - Fetches details of a user by their unique ID.
 
 Request Type: GET
@@ -25,7 +23,8 @@ Endpoint: /users/{user_id}
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
 
-Create a New User - Adds a new user to the DB with the provided username.
+Create a New User - Adds a new user to the DB with the provided username. Simultaneously creates an artcollection and adds it to the DB that is linked to the new user.
+
 
 Request Type: POST
 Endpoint: /users
@@ -34,7 +33,8 @@ Example Request: POST https://trexicurabe.onrender.com/users
 
 Content Type - json:
 {
-    "username": "purple_grapefruit"
+
+"username": "purple_grapefruit"
 }
 
 
@@ -44,8 +44,12 @@ Request Type: DELETE
 Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
+
+
 </p>
 
+=======
+</p>
 
 <h3>Curated Collections Endpoints:</h3>
 <p>
