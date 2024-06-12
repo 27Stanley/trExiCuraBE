@@ -22,7 +22,7 @@ Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
-Create a New User - Adds a new user to the DB with the provided username.
+Create a New User - Adds a new user to the DB with the provided username. Simultaneously creates an artcollection and adds it to the DB that is linked to the new user.
 
 Request Type: POST
 Endpoint: /users
