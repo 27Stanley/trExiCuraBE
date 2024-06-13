@@ -75,7 +75,6 @@ exports.deleteArtFromCollection = async (req, res) => {
 
     for (let i = 0; i < usersArtCollection.artworks.length; i++) {
       if (usersArtCollection.artworks[i].objectId === objectId) {
-        console.log("here 3");
         usersArtCollection.artworks.splice(i, 1);
         break;
       }
