@@ -71,7 +71,40 @@ Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
 <h3>Curated Collections Endpoints:</h3>
 <p>
-  tba
+
+Fetch All Collections - Fetches a list of all artCollections.
+
+Request Type: GET
+Endpoint: /artCollections
+
+Example request: GET https://trexicurabe.onrender.com/artCollections/
+
+Patch artwork to a collection - Adds artwork to a users art collection.
+
+Request Type: PATCH
+Endpoint: /artCollections/:collectionId
+
+Example request:
+PATCH https://trexicurabe.onrender.com/artCollections/123456789
+
+Content Type - json:
+{
+"department": "MET",
+"objectId": 12345
+}
+
+Delete artwork from collection - removes artwork to a users art collection.
+
+Request Type: PATCH
+Endpoint: /artCollections/:collectionId
+
+DELETE https://trexicurabe.onrender.com/artCollections/123456789
+Content-Type: application/json
+
+{
+"objectId": 12345
+}
+
 </p>
 
 <h3>Error Handling</h3>
