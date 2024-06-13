@@ -4,6 +4,27 @@ This API allows for fetching, posting, and deleting user and their curated art c
 
 The base URL for all endpoints is https://trexicurabe.onrender.com/.
 
+<h2>Using the App locally:</h2>
+<p>
+
+method 1:
+open console in the folders directory and execute - "node listen.js"
+
+method 2:
+open console in the folders directory and execute - "nodemon start"
+
+Api is functioning properly when logs show:
+Listening on xxxx ...
+connected to database
+
+Now the user may execute HTTP requests
+
+(within vscode using extensions such as "REST Client" or externally with "Insomnia")
+
+to the api to view and manipulate the data as seen in the "route.rest" file. See below for endpoints.
+
+</p>
+
 <h2>Endpoints:</h2>
 
 <h3>Users Endpoints:</h3>
@@ -22,9 +43,7 @@ Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
-
 Create a New User - Adds a new user to the DB with the provided username. Simultaneously creates an artcollection and adds it to the DB that is linked to the new user.
-
 
 Request Type: POST
 Endpoint: /users
@@ -37,7 +56,6 @@ Content Type - json:
 "username": "purple_grapefruit"
 }
 
-
 Delete User by ID - Removes a user from the databse by their unique ID.
 
 Request Type: DELETE
@@ -45,10 +63,10 @@ Endpoint: /users/{user_id}
 
 Example Request: GET https://trexicurabe.onrender.com/users/${userId}
 
-
 </p>
 
 =======
+
 </p>
 
 <h3>Curated Collections Endpoints:</h3>

@@ -2,7 +2,7 @@ GET http://localhost:9090/users/
 
 ###
 
-GET http://localhost:9090/users/666855c0c01daff1f8ed2491
+GET http://localhost:9090/users/666a0161a2acf1ca388738b9
 
 ###
 
@@ -10,15 +10,7 @@ POST http://localhost:9090/users
 Content-Type: application/json
 
 {
-    "username": "purple_grapefruit"
-}
-
-###
-POST http://localhost:9090/users
-Content-Type: application/json
-
-{
-    "username": "whimsicle_walrus"
+    "username": "whimsicle_willow"
 }
 
 ###
@@ -34,7 +26,7 @@ POST http://localhost:9090/users
 Content-Type: application/json
 
 {
-    "username": "blue_butterfly"
+    "username": "charlie"
 }
 
 ###
@@ -67,4 +59,28 @@ DELETE http://localhost:9090/users/666855c0c01daff1f8ed2491
 
 
 ###
-GET http://localhost:9090/artCollections/ 
+GET http://localhost:9090/artCollections/
+
+###
+GET http://localhost:9090/artCollections/666a315d423c437f3cccce65
+
+###
+
+PATCH http://localhost:9090/artCollections/666a315d423c437f3cccce65
+Content-Type: application/json
+
+{
+    "department": "MET",
+    "objectId": 334357
+}
+
+###
+
+DELETE  http://localhost:9090/artCollections/666a315d423c437f3cccce65
+Content-Type: application/json
+
+{
+    "objectId": 334357
+}
+
+###

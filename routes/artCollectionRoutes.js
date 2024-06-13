@@ -3,18 +3,15 @@ const router = express.Router();
 const {
   getAllCollections,
   getCollectionById,
-  createCollection,
   addToCollection,
-  deleteCollection,
+  deleteArtFromCollection,
 } = require("../controller/artCollections.controller");
 
 router.get("/", getAllCollections);
 router.get("/:id", getCollectionById);
 
-// router.post("/", createCollection);
+router.patch("/:collectionId", addToCollection);
 
-// router.put("/:id", addToCollection);
-
-// router.delete("/:id", deleteCollection);
+router.delete("/:collectionId", deleteArtFromCollection);
 
 module.exports = router;

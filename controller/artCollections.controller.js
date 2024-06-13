@@ -11,10 +11,9 @@ exports.getAllCollections = async (req, res, next) => {
 };
 
 exports.getCollectionById = async (req, res) => {
+  console.log(req.params);
   try {
-    const collection = await ArtCollection.findById(req.params.id).populate(
-      "user"
-    );
+    const collection = await ArtCollection.findById(req.params.id);
     if (!collection) {
       return res.status(404).json({ message: "Collection not found" });
     }
@@ -24,20 +23,71 @@ exports.getCollectionById = async (req, res) => {
   }
 };
 
-exports.createCollection = async (req, res) => {
-  const { user, artworks } = req.body;
+exports.addToCollection = async (req, res) => {
+  const { collectionId } = req.params;
+  const { department, objectId } = req.body;
+
+  if (department !== "MET" && department !== "HAR") {
+    return res
+      .status(404)
+      .json({ message: "Invalid artwork, not belonging to MET or Harvard" });
+  }
 
   try {
-    const collection = new ArtCollection({
-      artworks,
-      user: id,
+    const usersArtCollection = await ArtCollection.findById(collectionId);
+
+    if (!usersArtCollection) {
+      return res
+        .status(404)
+        .json({ message: "users art collection not found" });
+    }
+
+    const repeatingArtPiece = usersArtCollection.artworks.find((artwork) => {
+      return artwork.objectId === objectId;
     });
-    const newCollection = await collection.save();
 
-    await User.findByIdAndUpdate(id, { collection: newCollection._id });
+    if (repeatingArtPiece !== undefined) {
+      return res
+        .status(400)
+        .json({ message: "this artwork already exists in users collection" });
+    }
 
-    res.status(201).json(newCollection);
+    usersArtCollection.artworks.push({ department, objectId });
+    await usersArtCollection.save();
+    res.status(201).json(usersArtCollection);
   } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
+  }
+};
+
+exports.deleteArtFromCollection = async (req, res) => {
+  const { collectionId } = req.params;
+  const { objectId } = req.body;
+
+  try {
+    const usersArtCollection = await ArtCollection.findById(collectionId);
+
+    if (!usersArtCollection) {
+      return res
+        .status(404)
+        .json({ message: "users art collection not found" });
+    }
+
+    for (let i = 0; i < usersArtCollection.artworks.length; i++) {
+      if (usersArtCollection.artworks[i].objectId === objectId) {
+        console.log("here 3");
+        usersArtCollection.artworks.splice(i, 1);
+        break;
+      }
+    }
+
+    await usersArtCollection.save();
+
+    res.status(200).json({
+      message: "Artwork removed successfully",
+      collection: usersArtCollection,
+    });
+  } catch (err) {
+    res.status(500).json({ message: err });
   }
 };
