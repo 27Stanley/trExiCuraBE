@@ -5,6 +5,9 @@ GET http://localhost:9090/users/
 GET http://localhost:9090/users/666a0161a2acf1ca388738b9
 
 ###
+GET http://localhost:9090/users/whimsical_willow
+
+###
 
 POST http://localhost:9090/users
 Content-Type: application/json

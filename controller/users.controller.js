@@ -44,14 +44,33 @@ exports.createUser = async (req, res, next) => {
   }
 };
 
-// Get one user
-exports.getUser = async (req, res, next) => {
+// Get one user by Id
+exports.getUserById = async (req, res, next) => {
   try {
     const user = await User.findById(req.params.id);
     if (user == null) {
       return res.status(404).json({ message: "Cannot find user" });
     }
     res.json(user);
+  } catch (err) {
+    res.status(404).json({ message: "Cannot find user" });
+  }
+};
+
+// Get one user by username
+exports.getUserByUsername = async (req, res, next) => {
+  const { username } = req.params;
+  console.log(username);
+
+  try {
+    const user = await User.findOne({ username: username });
+
+    if (!user) {
+      return res.status(404).json({ message: "user not found" });
+    } else {
+      console.log(user);
+      return res.json(user);
+    }
   } catch (err) {
     res.status(404).json({ message: "Cannot find user" });
   }
