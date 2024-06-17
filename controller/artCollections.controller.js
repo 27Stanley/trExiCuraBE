@@ -82,10 +82,7 @@ exports.deleteArtFromCollection = async (req, res) => {
 
     await usersArtCollection.save();
 
-    res.status(200).json({
-      message: "Artwork removed successfully",
-      collection: usersArtCollection,
-    });
+    res.status(204).send();
   } catch (err) {
     res.status(500).json({ message: err });
   }

@@ -56,6 +56,22 @@ Content Type - json:
 "username": "purple_grapefruit"
 }
 
+Returns:
+{
+	"user": {
+		"username": "purple_grapefruit",
+		"_id": "66703d1afe7b0339f9b9f4401",
+		"__v": 0,
+		"curatedCollection": "66703d1afe7b0339f9b9f442122
+	},
+	"collection": {
+		"user": "66703d1afe7b0339f9b9f4404",
+		"artworks": [],
+		"_id": "66703d1afe7b0339f9b9f4428",
+		"__v": 0
+	}
+}
+
 Delete User by ID - Removes a user from the databse by their unique ID.
 
 Request Type: DELETE

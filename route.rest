@@ -83,7 +83,7 @@ DELETE  http://localhost:9090/artCollections/666a315d423c437f3cccce65
 Content-Type: application/json
 
 {
-    "objectId": 334357
+    "objectId": 36087
 }
 
 ###
